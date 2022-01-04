@@ -1,0 +1,16 @@
+{
+  "prettier/prettier": ["error", { "singleQuote": true, "parser": "flow" }],
+  "overrides": [
+    {
+      "files": "*.sol",
+      "options": {
+        "printWidth": 150,
+        "tabWidth": 4,
+        "useTabs": false,
+        "singleQuote": false,
+        "bracketSpacing": false,
+        "explicitTypes": "always"
+      }
+    }
+  ]
+}
