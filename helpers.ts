@@ -69,5 +69,5 @@ export const saveAbi = (contractName: string, networkName: string) => {
   const abiLocation = `./deployments/${networkName}/${contractName}.json`;
   const abi = fs.readFileSync(abiLocation, { encoding: "utf8" });
 
-  fs.writeFileSync(`./frontend/abi/${contractName}.json`, abi);
+  fs.writeFileSync(`../frontend/src/abi/${contractName}.json`, abi);
 };

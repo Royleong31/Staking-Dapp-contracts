@@ -13,114 +13,87 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
+      name: "AggregatorV3Interface",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.AggregatorV3Interface__factory>;
+    getContractFactory(
       name: "Ownable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Ownable__factory>;
     getContractFactory(
-      name: "ERC721",
+      name: "ERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC721__factory>;
+    ): Promise<Contracts.ERC20__factory>;
     getContractFactory(
-      name: "ERC721Enumerable",
+      name: "IERC20Metadata",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC721Enumerable__factory>;
+    ): Promise<Contracts.IERC20Metadata__factory>;
     getContractFactory(
-      name: "IERC721Enumerable",
+      name: "IERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721Enumerable__factory>;
+    ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
-      name: "IERC721Metadata",
+      name: "Staking",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721Metadata__factory>;
+    ): Promise<Contracts.Staking__factory>;
     getContractFactory(
-      name: "IERC721",
+      name: "Bitcoin",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721__factory>;
+    ): Promise<Contracts.Bitcoin__factory>;
     getContractFactory(
-      name: "IERC721Receiver",
+      name: "Dai",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC721Receiver__factory>;
+    ): Promise<Contracts.Dai__factory>;
     getContractFactory(
-      name: "ERC165",
+      name: "Ether",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC165__factory>;
-    getContractFactory(
-      name: "IERC165",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC165__factory>;
-    getContractFactory(
-      name: "ERC721WithSale",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ERC721WithSale__factory>;
-    getContractFactory(
-      name: "ChimpAuction",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ChimpAuction__factory>;
-    getContractFactory(
-      name: "Chimps",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Chimps__factory>;
+    ): Promise<Contracts.Ether__factory>;
 
+    getContractAt(
+      name: "AggregatorV3Interface",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.AggregatorV3Interface>;
     getContractAt(
       name: "Ownable",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Ownable>;
     getContractAt(
-      name: "ERC721",
+      name: "ERC20",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.ERC721>;
+    ): Promise<Contracts.ERC20>;
     getContractAt(
-      name: "ERC721Enumerable",
+      name: "IERC20Metadata",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.ERC721Enumerable>;
+    ): Promise<Contracts.IERC20Metadata>;
     getContractAt(
-      name: "IERC721Enumerable",
+      name: "IERC20",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.IERC721Enumerable>;
+    ): Promise<Contracts.IERC20>;
     getContractAt(
-      name: "IERC721Metadata",
+      name: "Staking",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.IERC721Metadata>;
+    ): Promise<Contracts.Staking>;
     getContractAt(
-      name: "IERC721",
+      name: "Bitcoin",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.IERC721>;
+    ): Promise<Contracts.Bitcoin>;
     getContractAt(
-      name: "IERC721Receiver",
+      name: "Dai",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.IERC721Receiver>;
+    ): Promise<Contracts.Dai>;
     getContractAt(
-      name: "ERC165",
+      name: "Ether",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.ERC165>;
-    getContractAt(
-      name: "IERC165",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IERC165>;
-    getContractAt(
-      name: "ERC721WithSale",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ERC721WithSale>;
-    getContractAt(
-      name: "ChimpAuction",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ChimpAuction>;
-    getContractAt(
-      name: "Chimps",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.Chimps>;
+    ): Promise<Contracts.Ether>;
 
     // default types
     getContractFactory(

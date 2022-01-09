@@ -7,6 +7,6 @@
     "outDir": "dist",
     "declaration": true
   },
-  "include": ["./scripts/*", "./test/*", "./typechain", "./deploy/*", "deploy/testing/1_testChimps.ts", "test/Chimps/mint.test.ts", "deploy/test/1_testChimps.ts", "test/Auction/initialise.test.ts", "test/Chimps/initialise.test.ts"],
+  "include": ["./scripts/*", "./test/*", "./typechain", "./deploy/*", "deploy/testing/1_testChimps.ts", "test/Stake/mint.test.ts", "deploy/tokens/1_testChimps.ts", "test/Mocks/initialise.test.ts", "test/Stake/initialise.test.ts"],
   "files": ["./hardhat.config.ts"]
 }

@@ -28,11 +28,13 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       // If you want to do some forking, uncomment this
+      saveDeployments: true,
       forking: {
         url: process.env.MAINNET_RPC_URL!,
       },
     },
     localhost: {
+      saveDeployments: true,
       // allowUnlimitedContractSize: true,
     },
     kovan: {
