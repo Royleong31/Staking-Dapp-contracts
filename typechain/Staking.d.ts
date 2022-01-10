@@ -211,10 +211,14 @@ interface StakingInterface extends ethers.utils.Interface {
   events: {
     "OwnershipTransferred(address,address)": EventFragment;
     "Received(address,uint256)": EventFragment;
+    "StakeTokens(address,address)": EventFragment;
+    "UnstakeTokens(address,address)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Received"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "StakeTokens"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "UnstakeTokens"): EventFragment;
 }
 
 export type OwnershipTransferredEvent = TypedEvent<
@@ -223,6 +227,14 @@ export type OwnershipTransferredEvent = TypedEvent<
 
 export type ReceivedEvent = TypedEvent<
   [string, BigNumber] & { arg0: string; arg1: BigNumber }
+>;
+
+export type StakeTokensEvent = TypedEvent<
+  [string, string] & { tokenAddress: string; staker: string }
+>;
+
+export type UnstakeTokensEvent = TypedEvent<
+  [string, string] & { tokenAddress: string; unstaker: string }
 >;
 
 export class Staking extends BaseContract {
@@ -562,6 +574,38 @@ export class Staking extends BaseContract {
       undefined?: null,
       undefined?: null
     ): TypedEventFilter<[string, BigNumber], { arg0: string; arg1: BigNumber }>;
+
+    "StakeTokens(address,address)"(
+      tokenAddress?: null,
+      staker?: null
+    ): TypedEventFilter<
+      [string, string],
+      { tokenAddress: string; staker: string }
+    >;
+
+    StakeTokens(
+      tokenAddress?: null,
+      staker?: null
+    ): TypedEventFilter<
+      [string, string],
+      { tokenAddress: string; staker: string }
+    >;
+
+    "UnstakeTokens(address,address)"(
+      tokenAddress?: null,
+      unstaker?: null
+    ): TypedEventFilter<
+      [string, string],
+      { tokenAddress: string; unstaker: string }
+    >;
+
+    UnstakeTokens(
+      tokenAddress?: null,
+      unstaker?: null
+    ): TypedEventFilter<
+      [string, string],
+      { tokenAddress: string; unstaker: string }
+    >;
   };
 
   estimateGas: {

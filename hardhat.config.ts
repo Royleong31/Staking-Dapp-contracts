@@ -102,7 +102,7 @@ const config: HardhatUserConfig = {
   },
 
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY, // ?: change to other network API key if not using ETH
+    apiKey: process.env.POLYGONSCAN_API_KEY, // ?: change to other network API key if not using ETH
   },
 };
 

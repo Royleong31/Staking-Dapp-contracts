@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 
@@ -116,19 +117,21 @@ contract Staking is Ownable {
         decimals = oracle.decimals();
     }
 
-    function getUserSingleTokenUSDValue(address _user, IERC20 _tokenAddress)
+    function getUserSingleTokenUSDValue(address _user, address _tokenAddress)
         public
         view
-        tokenIsAllowed(_tokenAddress)
+        tokenIsAllowed(IERC20(_tokenAddress))
         returns (uint256)
     {
-        uint256 userTokenBalance = stakingBalances[_tokenAddress][_user];
+        uint256 userTokenBalance = stakingBalances[IERC20(_tokenAddress)][_user];
         if (userTokenBalance == 0) return 0;
 
-        (int256 price, uint8 decimals) = getTokenValue(_tokenAddress);
+        uint8 tokenDecimals = ERC20(_tokenAddress).decimals();
+
+        (int256 price, uint8 decimals) = getTokenValue(IERC20(_tokenAddress));
         // ?: userTokenBalance has 18 decimals, so divide it by 10**18.
         // ?: price from the oracle has <decimals> number of decimals, so divide by 10**decimals
-        return (uint256(price) * userTokenBalance) / (10**decimals) / (10**18);
+        return (uint256(price) * userTokenBalance) / (10**decimals) / (10**tokenDecimals);
     }
 
     function getUserTotalUSDValue(address _user) public view returns (uint256) {
@@ -136,7 +139,7 @@ contract Staking is Ownable {
 
         uint256 totalUSDValue = 0;
         for (uint256 i = 0; i < allowedTokens.length; i++) {
-            totalUSDValue += getUserSingleTokenUSDValue(_user, allowedTokens[i]);
+            totalUSDValue += getUserSingleTokenUSDValue(_user, address(allowedTokens[i]));
         }
 
         return totalUSDValue;
